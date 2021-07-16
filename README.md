@@ -1,2 +1,6 @@
-# node-demo
-复习node,记录
+## 工具
+
+supervisor ： 不用每次都重新启动
+
+
+npm init --yes
