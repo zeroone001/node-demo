@@ -10,11 +10,10 @@ socket.connect({
 let buffer = Buffer.alloc(4);
 
 buffer.writeInt32BE('123');
-
-
-
 socket.write(buffer);
 
+
+// 监听返回的数据
 socket.on('data', (bufferNew) => {
     console.log('buffer:::', bufferNew.toString());
 });

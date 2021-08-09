@@ -20,3 +20,21 @@ npm init --yes
 
 ## RPC通信
 
+
+## easy_sock
+
+快速开发基于tcp连接的二进制网络协议接口的nodejs模块 
+[https://www.npmjs.com/package/easy_sock](https://www.npmjs.com/package/easy_sock)
+
+
+## RESTful
+
+## GraphQL
+
+[https://www.npmjs.com/package/graphql](https://www.npmjs.com/package/graphql)
+专注数据聚合，前端需要什么就返回什么
+
+## BFF 应用BFF层
+
+
+
