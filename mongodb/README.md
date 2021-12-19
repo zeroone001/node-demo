@@ -166,3 +166,43 @@ const findAndUpdate = (personName, done) => {
 
 ### findByIdAndRemove
 
+```js
+const removeById = (personId, done) => {
+  Person.findByIdAndRemove(personId, (err, data) => {
+    if (err) return console.log(err);
+     done(null, data);
+  })
+};
+```
+
+### remove
+
+删除多条
+
+```js
+const removeManyPeople = (done) => {
+  const nameToRemove = "Mary";
+  Person.remove({name: nameToRemove}, (err, data) => {
+    if (err) return console.log(err);
+    done(null, data);
+  })
+  
+};
+```
+
+### 综合
+
+select 不能传对象，否则报错
+
+查找，排序，限制条数，选择显示哪几个属性，最后的回调
+
+```js
+const queryChain = (done) => {
+  const foodToSearch = "burrito";
+
+  Person.find({favoriteFoods: foodToSearch}).sort({name: 1}).limit(2).select('name favoriteFoods').exec((err, data) => {
+  if (err) return console.log(err);
+    done(null, data);
+  })
+};
+```
