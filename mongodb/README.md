@@ -119,3 +119,33 @@ const findOneByFood = (food, done) => {
     });
 };
 ```
+
+### findById
+
+```js
+const findPersonById = (personId, done) => {
+   Person.findById(personId, (err, data) => {
+      if (err) return console.log(err);
+      done(null, data);
+    });
+};
+```
+
+### 通过执行查询、编辑、保存来执行经典更新流程
+
+
+```js
+const findEditThenSave = (personId, done) => {
+  const foodToAdd = "hamburger";
+
+  Person.findById(personId, (err, person) => {
+    if (err) return console.log(err);
+    person.favoriteFoods.push(foodToAdd);
+
+    person.save((err, data) => {
+      if (err) return console.log(err);
+      done(null, data);
+    })
+  });
+};
+```
