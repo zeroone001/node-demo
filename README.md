@@ -81,3 +81,32 @@ app.get('/:word/echo', function(req, res) {
   res.json({echo: req.params.word});
 });
 ```
+
+### query 
+
+```js
+app.route('/name').get((req, res) => {
+  res.json({
+    name: `${req.query.first} ${req.query.last}`
+  })
+});
+```
+
+### post
+
+multipart/form-data， 它被用来上传二进制文件
+
+```js
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.route('/name').get((req, res) => {
+  res.json({
+    name: `${req.query.first} ${req.query.last}`
+  })
+}).post((req, res) => {
+  res.json({
+    name: `${req.body.first} ${req.body.last}`
+  })
+});
+```
