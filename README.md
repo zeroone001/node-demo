@@ -37,4 +37,47 @@ npm init --yes
 ## BFF 应用BFF层
 
 
+## express
 
+### express.static
+
+https://expressjs.com/en/guide/using-middleware.html
+
+中间件
+
+```js
+/* 中间件， 注意 next */
+app.use(function(req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
+});
+
+app.use('/public', express.static(process.cwd() + '/public'));
+
+
+```
+
+### 通过链式调用中间件来创建时间服务
+
+```js
+app.get(
+  "/now",
+  (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+  },
+  (req, res) => {
+    res.send({
+      time: req.time
+    });
+  }
+);
+```
+
+### params
+
+```js
+app.get('/:word/echo', function(req, res) {
+  res.json({echo: req.params.word});
+});
+```
