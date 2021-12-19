@@ -65,3 +65,57 @@ favoriteFoods: [String]
 ```js
 let Person = mongoose.model('Person', personSchema);
 ```
+
+### documents
+
+```js
+const createAndSavePerson = (done) => {
+  let person = new Person(
+    {
+      name: 'lys',
+      age: 18,
+      favoriteFoods: ['123']
+    }
+  );
+  person.save(function(err, data) {
+    //   ...do your stuff here...
+    done(null, data);
+  });
+};
+```
+
+### Model.create() 创建多个实例
+
+```js
+var arrayOfPeople = [
+  {name: "Frankie", age: 74, favoriteFoods: ["Del Taco"]},
+  {name: "Sol", age: 76, favoriteFoods: ["roast chicken"]},
+  {name: "Robert", age: 78, favoriteFoods: ["wine"]}
+];
+const createManyPeople = (arrayOfPeople, done) => {
+  Person.create(arrayOfPeople, (err, data) => {
+      if (err) return console.log(err);
+      done(null, data);
+    });
+
+};
+```
+
+### Model.find()
+
+```js
+Person.find({name: personName}, (err, data) => {
+      if (err) return console.log(err);
+      done(null, data);
+    });
+```
+### findOne
+
+```js
+const findOneByFood = (food, done) => {
+   Person.findOne({favoriteFoods: food}, (err, data) => {
+      if (err) return console.log(err);
+      done(null, data);
+    });
+};
+```
