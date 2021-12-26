@@ -119,3 +119,29 @@ app.route('/name').get((req, res) => {
   })
 });
 ```
+
+## Undici4
+
+在以前，request 是在 Node.js 中发送一个 HTTP 请求的首要选择，但是这个包在 2020 年 2 月 11 日已经标记为弃用。
+
+现在， Node.js 官方推荐 Undici4 作为在 Node.js 中发送 HTTP 请求的推荐选择，它更快速、可靠且符合规范，下面是一个小 Demo：
+
+```js
+import { request } from 'undici'
+
+const {
+  statusCode,
+  headers,
+  trailers,
+  body
+} = await request('http://localhost:3000/code秘密花园')
+
+console.log('response received', statusCode)
+console.log('headers', headers)
+
+for await (const data of body) {
+  console.log('data', data)
+}
+
+console.log('trailers', trailers)
+```
